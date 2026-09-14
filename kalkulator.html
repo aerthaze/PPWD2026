@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Kalkulator Sederhana</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f0f8ff;
+      }
+      .kalkulator {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      input[type="number"] {
+        padding: 10px;
+        margin: 5px;
+        font-size: 16px;
+        width: 80%;
+        box-sizing: border-box;
+      }
+      .gender-group {
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      .gender-group label {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+      button {
+        padding: 10px 15px;
+        margin: 5px;
+        font-size: 16px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .button2 {
+        padding: 10px 15px;
+        margin: 5px;
+        font-size: 16px;
+        background: #808080;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #2980b9;
+      }
+      .button2:hover {
+        background: #940303;
+      }
+      .hasil {
+        font-size: 28px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-top: 20px;
+      }
+      .tabel-bmi {
+        margin-top: 25px;
+        border-top: 2px solid #ecf0f1;
+        padding-top: 15px;
+      }
+
+      .tabel-bmi table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        font-size: 14px;
+      }
+      .tabel-bmi th, .tabel-bmi td {
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+      .tabel-bmi th {
+        background-color: #3498db;
+        color: white;
+      }
+      /* warna kategori */
+      .kurus { color: #3498db; font-weight: bold; }
+      .normal { color: #2ecc71; font-weight: bold; }
+      .gemuk { color: #f39c12; font-weight: bold; }
+      .obesitas { color: #e74c3c; font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <div class="kalkulator">
+      <h2>📊 Kalkulator BMI</h2>
+      <div class="gender-group">
+        <label><input type="radio" id="laki-laki" name="gender" value="laki-laki" checked /> Laki-laki</label>
+        <label><input type="radio" id="perempuan" name="gender" value="perempuan" /> Perempuan</label>
+      </div><br />
+      <input
+        type="number"
+        id="umur"
+        placeholder="Masukkan Umur (tahun)"
+      /><br />
+      <input
+        type="number"
+        id="angka1"
+        placeholder="Masukkan Berat Badan (kg)"
+      /><br />
+      <input
+        type="number"
+        id="angka2"
+        placeholder="Masukkan Tinggi Badan (cm)"
+      /><br /><br />
+
+      <button onclick="hitungBMI()">Hitung BMI</button>
+      <button class="button2" onclick="reset()">Reset</button>
+
+      <div class="hasil">
+        Hasil: <span id="hasilAngka">0</span><br />
+        <small style="font-size: 18px; color: #7f8c8d;">Kategori: <span id="kategoriBMI">-</span></small>
+      </div>
+<div></div>
+    </div>
+      <div class="tabel-bmi">
+        <h3>Tabel Kategori BMI</h3>
+        <table>
+          <tr>
+            <th>Kategori</th>
+            <th>Nilai BMI</th>
+          </tr>
+          <tr>
+            <td class="kurus">Kurus</td>
+            <td>&lt; 18.5</td>
+          </tr>
+          <tr>
+            <td class="normal">Normal</td>
+            <td>18.5 - 24.9</td>
+          </tr>
+          <tr>
+            <td class="gemuk">Gemuk</td>
+            <td>25.0 - 29.9</td>
+          </tr>
+          <tr>
+            <td class="obesitas">Obesitas</td>
+            <td>&ge; 30.0</td>
+          </tr>
+        </table>
+      </div>
+
+    <script>
+      function hitungBMI() {
+        let berat = parseFloat(document.getElementById("angka1").value);
+        let tinggi = parseFloat(document.getElementById("angka2").value);
+        let gender = document.querySelector('input[name="gender"]:checked').value;
+
+        if (!berat || !tinggi || tinggi <= 0) {
+          alert("Harap masukkan berat dan tinggi badan yang valid!");
+          return;
+        }
+
+        // Perhitungan BMI langsung menggunakan cm
+        let bmi = (berat / (tinggi * tinggi)) * 10000;
+
+        let kategori = "";
+
+        if (bmi < 18.5) {
+          kategori = "Kurus";
+        } else if (bmi <= 24.9) {
+          kategori = "Normal";
+        } else if (bmi <= 29.9) {
+          kategori = "Gemuk";
+        } else {
+          kategori = "Obesitas";
+        }
+
+        document.getElementById("hasilAngka").innerHTML = bmi.toFixed(1);
+        let elemKategori = document.getElementById("kategoriBMI");
+        elemKategori.innerHTML = kategori;
+        elemKategori.className = kategori.toLowerCase();
+      }
+
+      function reset() {
+        document.getElementById("umur").value = "";
+        document.getElementById("angka1").value = "";
+        document.getElementById("angka2").value = "";
+        document.getElementById("hasilAngka").innerHTML = "0";
+        let elemKategori = document.getElementById("kategoriBMI");
+        elemKategori.innerHTML = "-";
+        elemKategori.className = "";
+      }
+    </script>
+  </body>
+</html>
