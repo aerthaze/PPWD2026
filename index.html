@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Saya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"rel="stylesheet"/>
+    <link rel="stylesheet"href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"/>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+
+  <!-- loading screen -->
+  <div id="loading-screen">
+    <div id="loading-inner">
+
+
+      <div class="loading-bar">
+      <progress class="nes-progress" value="90" max="100"></progress>
+      </div>
+
+      <p id="loading-blink">PRESS START</p>
+
+    </div>
+  </div>
+
+      <audio id="click-sound" src="https://videotourl.com/audio/1790462120746-be9778ff-1554-4d1f-8c83-5896dc463c1b.mp3" preload="auto"></audio>
+
+    <audio id="bgm" loop preload="none">
+        <source src="images/backsound.mp3" type="audio/mp3">
+        <source src="https://www.image2url.com/r2/default/audio/1790446517059-fb928e81-8914-41cc-920d-b67bf42746dd.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+  
+
+  <!-- Navigasi -->
+    <nav>
+      <div class="container">
+        <ul class="nav-links">
+          <li><a href="index.html"  class="nes-btn is-primary animate__animated animate__bounceInDown">Home</a></li>
+          <li><a href="projects.html"class="nes-btn animate__animated animate__bounceInDown">Projects</a></li>
+          <li><a href="about.html"class="nes-btn animate__animated animate__bounceInDown">About</a></li>
+          <li><a href="contact.html"class="nes-btn animate__animated animate__bounceInDown">Contact</a></li>
+        </ul>
+        <button id="dark-mode-btn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">&#127769;</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="teks">
+          <h1><span id="typing-text"></span> </h1>
+        </div>
+        <div class="nes-container is-rounded animate__animated animate__fadeIn">
+          <p>Welcome <span class="nes-text is-primary">travelers!</span> Interested to know  <span class="nes-text is-success">about me?</span></p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-singkat">
+      <div class="container">
+        <div class="nes-container is-rounded animate__animated animate__fadeIn">
+          <h2>About me</h2>
+          <p>Hey! My name is Muhammad Farras Haidar Revanezka.<p>
+           <p> I am a <span id="job1" class="nes-text is-primary">Web Developer</span>, <span id="job2" class="nes-text is-primary">UI/UX Designer</span>, and also a <span id="job3" class="nes-text is-primary">Motion Designer</span> </p>
+            <p>Currently an undergraduate student at Tanjungpura University, Information Systems. </p>
+            <p>I like to design stuff and do fun activities.</p>
+        </div>
+      </div>
+    </section>
+
+  <script src="js/main.js"></script>
+  <footer>
+    <p>&copy; 2026 made with love.</p>
+  </footer>
+  </body>
+</html>
