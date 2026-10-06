@@ -1,4 +1,4 @@
-"name: Deploy to Teacher Server
+name: Deploy to Teacher Server
 
 on:
   push:
