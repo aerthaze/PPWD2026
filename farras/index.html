@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil Andi Pratama</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6fa;
+      color: #222;
+    }
+
+    header {
+      background: #2a5298;
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #2a5298;
+    }
+
+    button {
+      background: #2a5298;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1e3c72;
+    }
+
+    button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 4px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      display: none;
+    }
+
+    .skill {
+      display: inline-block;
+      background: #dce6f9;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin: 3px;
+    }
+
+    .produk {
+      display: inline-block;
+      width: 48%;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 8px;
+      box-sizing: border-box;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding: 5px 0;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .5);
+    }
+
+    #modal .box {
+      background: #fff;
+      max-width: 380px;
+      margin: 60px auto;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    del {
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <span>Keranjang: <b id="jumlah">0</b> item</span>
+  </header>
+
+  <main>
+    <section id="profil">
+      <h2>Profil</h2>
+      <h3 id="nama">Andi Pratama</h3>
+      <p id="jabatan">Front-End Developer</p>
+      <p>Jakarta, Indonesia | andi@example.com</p>
+      <button id="btnUbah">Ubah Profil</button>
+      <button id="btnEfek">Efek</button>
+      <div id="formUbah" style="display: none; margin-top: 10px;">
+        <input id="namaBaru" placeholder="Nama baru">
+        <span class="error" id="errNamaBaru">Nama minimal 3 karakter</span>
+        <button id="btnSimpan">Simpan</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skill</h2>
+      <div id="daftarSkill">
+        <span class="skill">HTML5</span>
+        <span class="skill">CSS3</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">jQuery</span>
+      </div>
+      <input id="skillBaru" placeholder="Tambah skill..." style="width: 60%;">
+      <button id="btnSkill">Tambah</button>
+    </section>
+
+    <section>
+      <h2>Layanan</h2>
+      <p><i>Diskon 10% jika total belanja lebih dari Rp 100.000</i></p>
+      <div id="daftarProduk"></div>
+    </section>
+
+    <section>
+      <h2>Keranjang</h2>
+      <div id="isiKeranjang"></div>
+      <p>Total: <b id="cartTotal">Rp 0</b></p>
+      <button id="btnCheckout" disabled>Checkout</button>
+      <button id="btnKosong">Kosongkan</button>
+    </section>
+
+    <section>
+      <h2>Riwayat Pesanan</h2>
+      <div id="riwayat"></div>
+      <button id="btnHapusRiwayat">Hapus Riwayat</button>
+    </section>
+
+    <section>
+      <h2>Tinggalkan Pesan</h2>
+      <form id="formKontak">
+        <input id="kNama" placeholder="Nama Anda">
+        <span class="error" id="errKNama">Nama minimal 3 karakter</span>
+        <input id="kEmail" placeholder="Email Anda">
+        <span class="error" id="errKEmail">Email tidak valid</span>
+        <textarea id="kPesan" rows="3" placeholder="Pesan"></textarea>
+        <span class="error" id="errKPesan">Pesan minimal 10 karakter</span>
+        <button type="submit">Kirim</button>
+      </form>
+      <p id="sukses" style="display: none; color: green;">Pesan terkirim!</p>
+    </section>
+  </main>
+
+  <div id="modal">
+    <div class="box">
+      <h3>Data Pembeli</h3>
+      <form id="formBeli">
+        <input id="bNama" placeholder="Nama">
+        <span class="error" id="errBNama">Nama minimal 3 karakter</span>
+        <textarea id="bAlamat" rows="2" placeholder="Alamat"></textarea>
+        <span class="error" id="errBAlamat">Alamat minimal 10 karakter</span>
+        <input id="bHp" placeholder="No HP (08xxxxxxxxxx)">
+        <span class="error" id="errBHp">No HP tidak valid</span>
+        <br><br>
+        <button type="submit">Pesan Sekarang</button>
+        <button type="button" id="btnBatal" style="background: #888;">Batal</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      function rp(n) {
+        return 'Rp ' + n.toLocaleString('id-ID');
+      }
+
+      $('#btnUbah').click(function () {
+        $('#formUbah').slideToggle();
+      });
+
+      $('#btnSimpan').click(function () {
+        var nama = $('#namaBaru').val().trim();
+        if (nama.length < 3) {
+          $('#errNamaBaru').show();
+          return;
+        }
+        $('#errNamaBaru').hide();
+        $('#nama').text(nama).css('color', '#2a5298');
+        $('#formUbah').slideUp();
+      });
+
+      $('#btnEfek').click(function () {
+        $('#profil').fadeOut(300).fadeIn(600).slideUp(200).slideDown(300);
+      });
+
+      $('#profil').hover(
+        function () {
+          $(this).css('background', '#eef3fd');
+        },
+        function () {
+          $(this).css('background', '#fff');
+        }
+      );
+
+      $('#btnSkill').click(function () {
+        var skill = $('#skillBaru').val().trim();
+        if (skill === '') {
+          return;
+        }
+        $('<span class="skill"></span>').text(skill).hide().appendTo('#daftarSkill').fadeIn();
+        $('#skillBaru').val('');
+      });
+
+      var produk = [
+        { id: 1, nama: 'Konsultasi 1 Jam', harga: 75000 },
+        { id: 2, nama: 'Review Kode', harga: 50000 },
+        { id: 3, nama: 'Template Portfolio', harga: 85000 },
+        { id: 4, nama: 'Desain Landing Page', harga: 300000 }
+      ];
+      var cart = [];
+
+      $.each(produk, function (i, p) {
+        $('#daftarProduk').append(
+          '<div class="produk">' +
+            '<b>' + p.nama + '</b><br>' + rp(p.harga) + '<br>' +
+            '<button class="tambah" data-id="' + p.id + '">Tambah</button>' +
+          '</div>'
+        );
+      });
+
+      $('#daftarProduk').on('click', '.tambah', function () {
+        var id = $(this).data('id');
+        var p = produk.filter(function (x) { return x.id === id; })[0];
+        var ada = cart.filter(function (x) { return x.id === id; })[0];
+        if (ada) {
+          ada.qty++;
+        } else {
+          cart.push({ id: p.id, nama: p.nama, harga: p.harga, qty: 1 });
+        }
+        updateCartUI();
+      });
+
+      $('#isiKeranjang').on('click', '.hapus', function () {
+        var id = $(this).data('id');
+        cart = cart.filter(function (x) { return x.id !== id; });
+        updateCartUI();
+      });
+
+      $('#btnKosong').click(function () {
+        cart = [];
+        updateCartUI();
+      });
+
+      function updateCartUI() {
+        $('#isiKeranjang').empty();
+        var jumlah = 0;
+
+        $.each(cart, function (i, item) {
+          jumlah += item.qty;
+          $('#isiKeranjang').append(
+            '<div class="item">' +
+              '<span>' + item.nama + ' x' + item.qty + '</span>' +
+              '<span>' + rp(item.harga * item.qty) +
+                ' <button class="hapus" data-id="' + item.id + '">x</button>' +
+              '</span>' +
+            '</div>'
+          );
+        });
+        $('#jumlah').text(jumlah);
+
+        var totalHarga = cart.reduce(function (sum, item) {
+          return sum + (item.harga * item.qty);
+        }, 0);
+
+        if (totalHarga > 100000) {
+          var diskon = totalHarga * 0.1;
+          $('#cartTotal').html(
+            '<del>' + rp(totalHarga) + '</del> ' + rp(totalHarga - diskon) + ' (diskon 10%)'
+          );
+        } else {
+          $('#cartTotal').text(rp(totalHarga));
+        }
+
+        $('#btnCheckout').prop('disabled', cart.length === 0);
+      }
+
+      function hitungTotal() {
+        var total = 0;
+        var qty = 0;
+        $.each(cart, function (i, item) {
+          total += item.harga * item.qty;
+          qty += item.qty;
+        });
+        if (total > 100000) {
+          total = total * 0.9;
+        }
+        return { total: total, qty: qty };
+      }
+
+      function simpanRiwayat(total, qty) {
+        var riwayat = JSON.parse(localStorage.getItem('riwayat')) || [];
+        riwayat.push({ tanggal: new Date().toISOString(), total: total, qty: qty });
+        localStorage.setItem('riwayat', JSON.stringify(riwayat));
+      }
+
+      function tampilRiwayat() {
+        var riwayat = JSON.parse(localStorage.getItem('riwayat')) || [];
+        $('#riwayat').empty();
+
+        if (riwayat.length === 0) {
+          $('#riwayat').text('Belum ada riwayat.');
+          return;
+        }
+
+        $.each(riwayat, function (i, r) {
+          var tanggal = new Date(r.tanggal).toLocaleString('id-ID');
+          $('#riwayat').append(
+            '<div class="item">' +
+              '<span>' + tanggal + ' (' + r.qty + ' item)</span>' +
+              '<b>' + rp(r.total) + '</b>' +
+            '</div>'
+          );
+        });
+      }
+
+      $('#btnHapusRiwayat').click(function () {
+        localStorage.removeItem('riwayat');
+        tampilRiwayat();
+      });
+
+      $('#btnCheckout').click(function () {
+        $('#modal').fadeIn();
+      });
+
+      $('#btnBatal').click(function () {
+        $('#modal').fadeOut();
+      });
+
+      $('#formBeli').submit(function (e) {
+        e.preventDefault();
+        var valid = true;
+
+        if ($('#bNama').val().trim().length < 3) {
+          $('#errBNama').show();
+          valid = false;
+        } else {
+          $('#errBNama').hide();
+        }
+
+        if ($('#bAlamat').val().trim().length < 10) {
+          $('#errBAlamat').show();
+          valid = false;
+        } else {
+          $('#errBAlamat').hide();
+        }
+
+        if (!/^(\+62|62|0)8[0-9]{8,11}$/.test($('#bHp').val().trim())) {
+          $('#errBHp').show();
+          valid = false;
+        } else {
+          $('#errBHp').hide();
+        }
+
+        if (valid) {
+          var hasil = hitungTotal();
+          simpanRiwayat(hasil.total, hasil.qty);
+          alert('Terima kasih, ' + $('#bNama').val().trim() + '! Pesanan berhasil.');
+          cart = [];
+          updateCartUI();
+          tampilRiwayat();
+          $('#formBeli')[0].reset();
+          $('#modal').fadeOut();
+        }
+      });
+
+      $('#formKontak').submit(function (e) {
+        e.preventDefault();
+        var valid = true;
+
+        if ($('#kNama').val().trim().length < 3) {
+          $('#errKNama').show();
+          valid = false;
+        } else {
+          $('#errKNama').hide();
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#kEmail').val().trim())) {
+          $('#errKEmail').show();
+          valid = false;
+        } else {
+          $('#errKEmail').hide();
+        }
+
+        if ($('#kPesan').val().trim().length < 10) {
+          $('#errKPesan').show();
+          valid = false;
+        } else {
+          $('#errKPesan').hide();
+        }
+
+        if (valid) {
+          $('#sukses').fadeIn().delay(2000).fadeOut();
+          this.reset();
+        }
+      });
+
+      updateCartUI();
+      tampilRiwayat();
+    });
+  </script>
+</body>
+
+</html>
