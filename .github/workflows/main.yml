@@ -13,5 +13,5 @@ jobs:
       - name: Trigger aaPanel Webhook
         uses: tunnaduong/aapanel-deploy-action@v1.0
         with:
-          panel_url: http://103.171.84.81:8122
-          webhook_key: ${{ secrets.AAPANEL_WEBHOOK_KEY }}"
+          panel_url: "http://103.171.84.81:8122"
+          webhook_key: ${{ secrets.AAPANEL_WEBHOOK_KEY }}
