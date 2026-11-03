@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Tugas 1 - Konversi Suhu</title>
+<style>
+  body { font-family: Arial; text-align: center; padding: 40px; background: #f0f2f5; }
+  .container { background: white; padding: 30px; border-radius: 12px; max-width: 450px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  input { padding: 10px; width: 80%; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
+  button { padding: 10px 25px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+  button:hover { background: #1a252f; }
+  .hasil { margin-top: 20px; padding: 15px; background: #eaf2f8; border-radius: 6px; text-align: left; }
+  .error { background: #fdecea; color: #c0392b; }
+</style>
+</head>
+<body>
+<p><a href="../index.html">&larr; Kembali ke Portal</a></p>
+<div class="container">
+  <h2>🌡️ Konversi Suhu</h2>
+  <input type="number" id="celcius" placeholder="Masukkan suhu (Celcius)">
+  <br>
+  <button onclick="konversiSuhu()">Konversi</button>
+  <div class="hasil" id="hasil">
+    <p>⬆️ Masukkan suhu dalam Celcius lalu klik tombol Konversi</p>
+  </div>
+</div>
+
+<script>
+function konversiSuhu() {
+  // Ambil nilai input (gunakan parseFloat seperti di contoh modul)
+  let celcius = parseFloat(document.getElementById("celcius").value);
+
+  let hasilDiv = document.getElementById("hasil");
+
+  // Validasi: harus berupa angka (isNaN akan true jika input kosong/bukan angka)
+  if (isNaN(celcius)) {
+    hasilDiv.className = "hasil error";
+    hasilDiv.innerHTML = "❌ Input tidak valid! Masukkan angka untuk suhu Celcius.";
+    return;
+  }
+
+  // Rumus konversi (sesuai rumus di modul)
+  let fahrenheit = (celcius * 9 / 5) + 32;
+  let kelvin = celcius + 273.15;
+
+  // Math.round untuk pembulatan, seperti pada contoh Kalkulator Nilai Akhir di modul
+  fahrenheit = Math.round(fahrenheit * 100) / 100;
+  kelvin = Math.round(kelvin * 100) / 100;
+
+  hasilDiv.className = "hasil";
+  hasilDiv.innerHTML =
+    "🌡️ Celcius: <strong>" + celcius + " °C</strong><br>" +
+    "🔥 Fahrenheit: <strong>" + fahrenheit + " °F</strong><br>" +
+    "❄️ Kelvin: <strong>" + kelvin + " K</strong>";
+}
+</script>
+</body>
+</html>

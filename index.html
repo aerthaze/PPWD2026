@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html lang="id"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">   <title>Portofolio Aerthaze</title> 
+ 
+  <!-- Menghubungkan file CSS --> 
+  <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+  <!-- ===== Bagian atas ===== --> 
+  <header class="header"> 
+    <h2 class="logo">Aerthaze</h2> 
+    <button id="tombol-tema">Mode gelap</button> 
+  </header> 
+ 
+  <main class="isi"> 
+ 
+    <!-- ===== Perkenalan ===== --> 
+    <section class="perkenalan"> 
+      <h1>Halo, saya Muhammad Farras Haidar Revanezka.</h1> 
+      <p>Mahasiswa Sistem Informasi yang suka membuat aplikasi web.</p>     </section> 
+ 
+    <!-- ===== Daftar proyek ===== --> 
+    <h2>Proyek saya</h2> 
+ 
+    <!-- Kotak pencarian (dipakai oleh script.js) --> 
+    <input type="text" id="cari" placeholder="Cari proyek..."> 
+ 
+    <section class="daftar-proyek"> 
+ 
+      <!-- Satu kartu = satu proyek. 
+           href mengarah ke index.html di dalam folder proyek tersebut. --> 
+      <a class="kartu" href="buku-tamu-digital/index.html">
+        <h3>Buku Tamu Digital</h3>
+        <p>Formulir pencatatan tamu kantor.</p>
+      </a>
+
+      <a class="kartu" href="mav-platform/index.html">
+        <h3>MAV Platform</h3>
+        <p>Menu berbeda untuk setiap peran pengguna.</p>
+      </a>
+
+      <a class="kartu" href="tugas1-konversi-suhu/index.html">
+        <h3>Tugas 1 - Konversi Suhu</h3>
+        <p>Program konversi suhu.</p>
+      </a>
+
+      <a class="kartu" href="tugas2-deret-ganjil/index.html">
+        <h3>Tugas 2 - Deret Bilangan Ganjil</h3>
+        <p>Menampilkan deret bilangan ganjil.</p>
+      </a>
+
+      <a class="kartu" href="tugas3-kalkulator/index.html">
+        <h3>Tugas 3 - Kalkulator Sederhana</h3>
+        <p>Kalkulator sederhana dengan JavaScript.</p>
+      </a>
+
+      <a class="kartu" href="Praktikum/ganjil-genap.html">
+        <h3>Praktikum - Cek Ganjil Genap</h3>
+        <p>Pengecekan bilangan ganjil atau genap.</p>
+      </a>
+
+      <a class="kartu" href="Praktikum/praktikum-kalkulator.html">
+        <h3>Praktikum - Kalkulator Sederhana</h3>
+        <p>Latihan kalkulator sederhana.</p>
+      </a>
+
+      <a class="kartu" href="Praktikum%201/index.html">
+        <h3>Praktikum 1 - Website Pribadi</h3>
+        <p>Website profil, kegiatan, dan puisi.</p>
+      </a>
+
+      <a class="kartu" href="Praktikum%202/index.html">
+        <h3>Praktikum 2 - Pemrograman Web</h3>
+        <p>Praktikum pemrograman web.</p>
+      </a>
+
+      <a class="kartu" href="Praktikum%20minggu%2011/index.html">
+        <h3>Praktikum Minggu 11 - Web Kopi</h3>
+        <p>Halaman web kopi.</p>
+      </a>
+
+      <a class="kartu" href="Praktik-css/index.html">
+        <h3>Praktik CSS - Profil Saya</h3>
+        <p>Latihan CSS halaman profil.</p>
+      </a>
+
+      <a class="kartu" href="Portal%20Berita/portal_berita.html">
+        <h3>Portal Berita - TongNews ID</h3>
+        <p>Tampilan portal berita.</p>
+      </a>
+
+      <a class="kartu" href="Portofolio/index.html">
+        <h3>Portofolio</h3>
+        <p>Portofolio dengan halaman About dan Contact.</p>
+      </a>
+
+      <a class="kartu" href="es%20krim/index.html">
+        <h3>Warung Ice Cream</h3>
+        <p>Halaman toko es krim.</p>
+      </a>
+
+      <a class="kartu" href="rumah-hijau/index.html">
+        <h3>Rumah Hijau</h3>
+        <p>Toko tanaman hias.</p>
+      </a>
+
+      <!-- Mau menambah proyek? Salin satu blok <a class="kartu"> di atas,            lalu ubah href, judul, dan deskripsinya. --> 
+ 
+    </section> 
+ 
+    <p id="pesan-kosong" class="pesan-kosong">Proyek tidak ditemukan.</p> 
+ 
+  </main> 
+ 
+  <!-- Menghubungkan file JavaScript (letakkan paling bawah) --> 
+  <script src="script.js"></script> 
+</body> 
+</html> 

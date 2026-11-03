@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hubungi Muhammad Farras Haidar Revanezka untuk kolaborasi atau pertanyaan seputar proyek.">
+    <title>Contact - Portofolio Saya</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">MyPortofolio</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><button class="theme-toggle" id="theme-toggle" aria-label="Ganti mode gelap/terang"></button></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Buka menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-section" style="padding-top: 130px;">
+        <div class="container">
+            <h2>Hubungi Saya</h2>
+            <p class="section-intro">Punya pertanyaan atau ingin berkolaborasi? Kirim pesan melalui form di bawah.</p>
+
+            <div class="contact-grid">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" name="name" placeholder="Nama lengkap kamu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tulis pesan kamu di sini..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                    <p class="form-status" id="form-status"></p>
+                </form>
+
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <span class="icon">✉️</span>
+                        <div>
+                            <h4>Email</h4>
+                            <p>farras.haidar@email.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="icon">📍</span>
+                        <div>
+                            <h4>Lokasi</h4>
+                            <p>Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="icon">🔗</span>
+                        <div>
+                            <h4>Media Sosial</h4>
+                            <p>LinkedIn · GitHub · Instagram</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MyPortofolio</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

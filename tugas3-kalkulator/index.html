@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Tugas 3 - Kalkulator Sederhana</title>
+<style>
+  body { font-family: Arial; text-align: center; padding: 40px; background: #f0f2f5; }
+  .container { background: white; padding: 30px; border-radius: 12px; max-width: 450px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  input, select { padding: 10px; width: 80%; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
+  button { padding: 10px 25px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+  button:hover { background: #1a252f; }
+  .hasil { margin-top: 20px; padding: 15px; background: #eaf2f8; border-radius: 6px; }
+  .error { background: #fdecea; color: #c0392b; }
+</style>
+</head>
+<body>
+<p><a href="../index.html">&larr; Kembali ke Portal</a></p>
+<div class="container">
+  <h2>🧮 Kalkulator Sederhana</h2>
+  <input type="number" id="angka1" placeholder="Bilangan 1">
+  <br>
+  <select id="operasi">
+    <option value="+">+  (Tambah)</option>
+    <option value="-">-  (Kurang)</option>
+    <option value="*">×  (Kali)</option>
+    <option value="/">÷  (Bagi)</option>
+  </select>
+  <br>
+  <input type="number" id="angka2" placeholder="Bilangan 2">
+  <br>
+  <button onclick="hitung()">Hitung</button>
+  <div class="hasil" id="hasil">
+    <p>⬆️ Masukkan dua bilangan dan pilih operasi</p>
+  </div>
+</div>
+
+<script>
+function hitung() {
+  // Ambil nilai input dengan parseFloat, sama seperti contoh di modul
+  let a = parseFloat(document.getElementById("angka1").value);
+  let b = parseFloat(document.getElementById("angka2").value);
+  let operasi = document.getElementById("operasi").value;
+  let hasilDiv = document.getElementById("hasil");
+
+  // Validasi: input harus berupa angka (pola sama seperti contoh Kalkulator Nilai di modul)
+  if (isNaN(a) || isNaN(b)) {
+    hasilDiv.className = "hasil error";
+    hasilDiv.innerHTML = "❌ Masukkan kedua bilangan dengan benar!";
+    return;
+  }
+
+  // Validasi: tidak boleh dibagi dengan 0
+  if (operasi === "/" && b === 0) {
+    hasilDiv.className = "hasil error";
+    hasilDiv.innerHTML = "❌ Tidak boleh membagi dengan 0!";
+    return;
+  }
+
+  let hasil;
+  let simbol;
+
+  switch (operasi) {
+    case "+":
+      hasil = a + b;
+      simbol = "+";
+      break;
+    case "-":
+      hasil = a - b;
+      simbol = "-";
+      break;
+    case "*":
+      hasil = a * b;
+      simbol = "×";
+      break;
+    case "/":
+      hasil = a / b;
+      simbol = "÷";
+      break;
+  }
+
+  hasilDiv.className = "hasil";
+  hasilDiv.innerHTML =
+    "🧮 " + a + " " + simbol + " " + b + " = <strong>" + hasil + "</strong>";
+}
+</script>
+</body>
+</html>

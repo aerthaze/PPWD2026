@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rumah Hijau - Toko Tanaman Hias</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="#beranda" class="logo">Rumah Hijau</a>
+      <ul class="nav-list">
+        <li><a href="#beranda">Beranda</a></li>
+        <li class="dropdown">
+          <button class="dropdown-btn" type="button">Katalog &#9660;</button>
+          <ul class="dropdown-menu">
+            <li><a href="#katalog">Tanaman Hias Daun</a></li>
+            <li><a href="#katalog">Tanaman Berbunga</a></li>
+            <li><a href="#katalog">Perlengkapan</a></li>
+          </ul>
+        </li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#daftar">Daftar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="beranda" class="hero">
+    <div class="container">
+      <h1 id="judulHero">Rumah Hijau</h1>
+      <p id="subHero">Hadirkan kesejukan alam ke dalam rumahmu. Tanaman hias sehat, harga bersahabat.</p>
+      <a href="#katalog" class="btn-hero">Lihat Katalog</a>
+    </div>
+  </header>
+
+  <section id="katalog" class="container">
+    <h2>Katalog Produk</h2>
+
+    <div class="tabs">
+      <button class="tab active" type="button" data-target="#tab-daun">Tanaman Daun</button>
+      <button class="tab" type="button" data-target="#tab-bunga">Tanaman Berbunga</button>
+      <button class="tab" type="button" data-target="#tab-alat">Perlengkapan</button>
+    </div>
+
+    <div id="tab-daun" class="tab-panel produk-grid">
+      <div class="produk-card">
+        <div class="emoji">🌿</div>
+        <h3>Monstera Deliciosa</h3>
+        <p>Daun besar berlubang yang eksotis, cocok untuk sudut ruang tamu.</p>
+        <div class="harga">Rp 85.000</div>
+      </div>
+      <div class="produk-card">
+        <div class="emoji">🪴</div>
+        <h3>Sansevieria</h3>
+        <p>Lidah mertua yang tahan banting dan membantu menyaring udara.</p>
+        <div class="harga">Rp 45.000</div>
+      </div>
+      <div class="produk-card">
+        <div class="emoji">🍃</div>
+        <h3>Aglaonema</h3>
+        <p>Daun bercorak merah muda yang manis, mudah dirawat di dalam ruangan.</p>
+        <div class="harga">Rp 65.000</div>
+      </div>
+    </div>
+
+    <div id="tab-bunga" class="tab-panel produk-grid" style="display:none;">
+      <div class="produk-card">
+        <div class="emoji">🌸</div>
+        <h3>Anggrek Bulan</h3>
+        <p>Bunga elegan yang tahan lama, pilihan favorit untuk hadiah.</p>
+        <div class="harga">Rp 120.000</div>
+      </div>
+      <div class="produk-card">
+        <div class="emoji">🌺</div>
+        <h3>Kamboja Jepang</h3>
+        <p>Adenium berbunga cantik dengan batang unik seperti bonsai.</p>
+        <div class="harga">Rp 95.000</div>
+      </div>
+      <div class="produk-card">
+        <div class="emoji">🌼</div>
+        <h3>Krisan Pot</h3>
+        <p>Bunga warna-warni yang ceria untuk mempercantik teras.</p>
+        <div class="harga">Rp 35.000</div>
+      </div>
+    </div>
+
+    <div id="tab-alat" class="tab-panel produk-grid" style="display:none;">
+      <div class="produk-card">
+        <div class="emoji">🏺</div>
+        <h3>Pot Keramik</h3>
+        <p>Pot minimalis berlubang drainase, tersedia ukuran sedang.</p>
+        <div class="harga">Rp 40.000</div>
+      </div>
+      <div class="produk-card">
+        <div class="emoji">🧪</div>
+        <h3>Pupuk Organik 1 Kg</h3>
+        <p>Nutrisi lengkap untuk pertumbuhan daun dan bunga yang subur.</p>
+        <div class="harga">Rp 25.000</div>
+      </div>
+      <div class="produk-card">
+        <div class="emoji">🚿</div>
+        <h3>Sprayer Mini</h3>
+        <p>Menyiram lembut untuk menjaga kelembapan daun.</p>
+        <div class="harga">Rp 18.000</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang" class="tentang">
+    <div class="container narrow">
+      <h2>Tentang Rumah Hijau</h2>
+      <p>Rumah Hijau adalah toko tanaman hias yang berawal dari kebun kecil di halaman rumah.
+        Kami memilih tanaman yang sehat, merawatnya dengan telaten, dan membantu kamu
+        menemukan tanaman yang cocok untuk setiap ruangan.</p>
+      <div id="detailTentang" class="detail" style="display:none;">
+        <ul>
+          <li>Semua tanaman dirawat langsung oleh tim kami.</li>
+          <li>Garansi tanaman sampai tujuan selama 7 hari.</li>
+          <li>Konsultasi perawatan gratis lewat WhatsApp.</li>
+        </ul>
+      </div>
+      <button id="btnDetail" class="btn-outline" type="button">Selengkapnya</button>
+    </div>
+  </section>
+
+  <section id="daftar" class="form-section">
+    <div class="container">
+      <h2>Daftar Member Rumah Hijau</h2>
+      <p class="sub">Dapatkan diskon 10% untuk pembelian pertamamu.</p>
+
+      <form id="formMember" class="form-box">
+        <div class="form-group">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" name="nama" placeholder="Nama lengkap">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Aktif</label>
+          <input type="text" id="email" name="email" placeholder="nama@domain.com">
+        </div>
+
+        <div class="form-group">
+          <label for="hp">Nomor WhatsApp / HP</label>
+          <input type="text" id="hp" name="hp" placeholder="10-13 digit angka, awalan 08">
+        </div>
+
+        <div class="form-group">
+          <label for="kota">Kota Domisili</label>
+          <select id="kota" name="kota">
+            <option value="">-- Pilih Kota --</option>
+            <option>Pontianak</option>
+            <option>Singkawang</option>
+            <option>Mempawah</option>
+            <option>Sambas</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Minimal 8 karakter, ada huruf & angka">
+        </div>
+
+        <div class="form-group">
+          <label for="konfirmasi">Konfirmasi Password</label>
+          <input type="password" id="konfirmasi" name="konfirmasi" placeholder="Ulangi password yang sama">
+        </div>
+
+        <div class="form-group cek">
+          <input type="checkbox" id="setuju" name="setuju">
+          <label for="setuju">Saya menyetujui syarat &amp; ketentuan member</label>
+        </div>
+
+        <button type="submit" class="btn">Daftar Sekarang</button>
+        <div class="sukses" id="sukses">
+          <strong>Pendaftaran Berhasil!</strong> Selamat bergabung di Rumah Hijau.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Rumah Hijau | Praktikum Pemrograman Web Dasar - Minggu 10 &amp; 11</p>
+  </footer>
+
+  <div id="toast"></div>
+  <button id="backToTop" type="button" aria-label="Kembali ke atas">&#8593;</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
